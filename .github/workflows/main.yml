@@ -22,11 +22,19 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+
+      - name: Clear Node.js Cache
+        run: npm cache clean --force
+
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: "npm"
+        env:
+          ACTIONS_STEP_DEBUG: true
+
+      - name: Install Dependencies
+        run: npm install
 
       - name: Start React Project
         run: npm start
