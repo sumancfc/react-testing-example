@@ -36,8 +36,5 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Start React Project
-        run: npm start
-
       - name: Test React Project
         run: npm test
